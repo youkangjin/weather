@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travel.seoul.mapper.AdminMapper">
+	<select id="getAdminList" resultType="com.travel.seoul.vo.AdminVO">
+         select * from admin_tbl
+   </select>
+   <select id="getAdminByNum" resultType="com.travel.seoul.vo.AdminVO">
+         select * from admin_tbl where admin_num = #{admin_num}
+   </select>
+   <select id="getAdminID" resultType="com.travel.seoul.vo.AdminVO">
+         select * from admin_tbl where admin_id = #{admin_id} limit 1
+   </select>
+   <insert id="adminInsert" parameterType="com.travel.seoul.vo.AdminVO">
+      insert into admin_tbl(admin_title,admin_content,admin_id,admin_pw ,admin_visitcount) values( #{admin_title},#{admin_content},#{admin_id},#{admin_pw},#{admin_visitcount})
+   </insert>
+   <insert id="adminIDInsert" parameterType="com.travel.seoul.vo.AdminVO">
+	      insert into admin_tbl(admin_title,admin_content,admin_id,admin_pw ,admin_visitcount) values(#{admin_title},#{admin_content},#{admin_id},#{admin_pw},#{admin_visitcount})
+	   </insert>
+   <insert id="adminInsertSelectKey" parameterType="com.travel.seoul.vo.AdminVO">
+		<selectKey keyProperty="admin_num" order="BEFORE" resultType="long">
+			SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'admin_tbl';			
+		</selectKey>
+		insert into admin_tbl(admin_title,admin_content,admin_id,admin_pw ,admin_visitcount) 
+		values( #{admin_title},#{admin_content},#{admin_id},#{admin_pw},#{admin_visitcount})
+	</insert>
+   <delete id="adminDelete" parameterType="com.travel.seoul.vo.AdminVO">
+      delete from admin_tbl where admin_num=#{admin_num}
+   </delete>
+   <delete id="adminIDDelete" parameterType="com.travel.seoul.vo.AdminVO">
+      delete from admin_tbl where admin_id = #{admin_id}
+   </delete>
+   <update id="adminUpdate" parameterType="com.travel.seoul.vo.AdminVO">
+      update admin_tbl set admin_title=#{admin_title},admin_content=#{admin_content}, admin_id=#{admin_id}, admin_postdate=now(), admin_visitcount=#{admin_visitcount} where admin_num=#{admin_num}
+   </update>
+	<update id="adminVisitcount" parameterType="com.travel.seoul.vo.AdminVO">
+		update admin_tbl set admin_visitcount=admin_visitcount+1 where admin_num=#{admin_num}
+	</update>
+	<select id="getNextNum" resultType="int">
+    SELECT COALESCE(MAX(admin_num), 0) + 1 FROM admin_tbl;
+</select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travel.seoul.mapper.CommentMapper">
+	<select id="getCommentList" resultType="com.travel.seoul.vo.CommentVO">
+         select * from comment_tbl
+   </select>
+   <insert id="commentInsert" parameterType="com.travel.seoul.vo.CommentVO">
+      insert into comment_tbl(id,co_content,co_date,board_num,admin_num) values( #{id},#{co_content},now(),#{board_num},0)
+   </insert>
+   <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="long">
+        delete from comment_tbl where co_num = #{co_num}
+    </delete>
+	<delete id="userdeleteComment" parameterType="com.travel.seoul.vo.CommentVO">
+        delete from comment_tbl where id = #{id}
+    </delete>
+    <!-- 댓글 수정 -->
+    <update id="updateComment" parameterType="com.travel.seoul.vo.CommentVO">
+        update comment_tbl
+        set co_content = #{co_content}
+        where co_num = #{co_num}
+    </update>
+   <select id="getCommentListByBoardNum" resultType="com.travel.seoul.vo.CommentVO">
+    select * from comment_tbl where board_num = #{board_num}
+	</select>
+	<select id="getCommentListByAdminNum" resultType="com.travel.seoul.vo.CommentVO">
+    select * from comment_tbl where admin_num = #{admin_num}
+	</select>
+	<insert id="commentAdminInsert" parameterType="com.travel.seoul.vo.CommentVO">
+      insert into comment_tbl(id,co_content,co_date,admin_num,board_num) values( #{id},#{co_content},now(),#{admin_num},0)
+   </insert>
+	<!-- 댓글 삭제 -->
+    <delete id="deleteAdminComment" parameterType="long">
+        delete from comment_tbl where co_num = #{co_num}
+    </delete>
+
+    <!-- 댓글 수정 -->
+    <update id="updateAdminComment" parameterType="com.travel.seoul.vo.CommentVO">
+        update comment_tbl
+        set co_content = #{co_content}
+        where co_num = #{co_num}
+    </update>
+</mapper>

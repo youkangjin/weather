@@ -1,0 +1,56 @@
+/* 보기 편하게 주석 달아놨고, 중복되는 코드들은 처음에만 설명 적어줌 */ 
+
+.slick-slider {
+    display: flex; /* 내부 요소들을 효율적으로 배치하고 정렬할 수 있는 기능 flexBox라고 함*/
+    align-items: center; /* 요소들을 세로 방향으로 가운데 정렬 */
+    justify-content: center; /* 요소들을 세로 방향으로 가운데 정렬 */ 
+    height: 90%;
+    margin: 0;
+    width: 100%;
+    overflow: hidden; /* 넘치는 이미지 숨김 */
+    position: relative;
+}
+
+.image-item {
+    flex: 0 0 200px; /* 이미지 카드 너비 조절하기 200px */
+    margin: 0 20px; /* 이미지 카드 간 간격조절하기임 */
+    text-align: center; /* center쓰면 가운데 정렬됨 */
+    width: 150px; /* 이미지 너비를 작고 예쁘게 150px 고정 */
+    height: 250px; /* 이미지 높이를 작고 예쁘게 150px 고정 */
+    overflow: hidden; 
+/*     border-radius: 8px; 모서리 깎기 (둥글게둥글게) */
+    position: relative; 
+}
+
+.image-title { /* 얘는 사진 위에 쓰는 글임 */
+    position: absolute;
+    top: 0; /*  글을 상단으로 배치해버리기 */
+    width: 100%; /* 사진이랑 가로 길이 똑같게 전체로 */
+    text-align: center; /* 사진이랑 가로 길이 똑같게 전체로 */
+    background-color: rgba(255, 255, 255, 0.8);  /* 글자 잘 보이게 배경색 흰색으로 ㄱㄱ */
+    color: black;  /* 글자색은 검은색 */
+    padding: 4px; /* 패딩은 얍실하게 할지 두껍게 할지 px로 정함 */
+    box-sizing: border-box; /* 너비와 높이 값은 테두리와 안쪽 여백을 포함 */
+}
+
+.image_weather { /* 각 사진들임 ㅇㅇ */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 사진 액자 틀 형식으로 일정하게 맞춤 */
+}
+
+.slick-list{
+	width: 60%;
+    height: 70%;
+}
+/* 버튼 스타일들 */
+#prevBtn,
+#nextBtn {
+    padding: 10px 20px;
+    margin-top: 5px; /* 숫자 높일수록 이전 다음 버튼 밑으로 처짐 */
+    background-color: #000000; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

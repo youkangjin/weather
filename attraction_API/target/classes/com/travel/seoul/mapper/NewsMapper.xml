@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travel.seoul.mapper.NewsMapper">
+	<select id="NewsList" resultType="com.travel.seoul.vo.NewsVO">
+         select * from news_tbl
+   </select>
+   <insert id="Newsinsert">
+ 		insert into news_tbl (news_path, news_alt, news_link)
+ 		values (#{news_path}, #{news_alt}, #{news_link})
+ 	</insert>
+   <update id="NewsUpdateLink" parameterType="com.travel.seoul.vo.NewsVO">
+      update news_tbl set news_link=#{news_link} where news_num=#{news_num}
+   </update>
+   <update id="NewsUpdatePath" parameterType="com.travel.seoul.vo.NewsVO">
+      update news_tbl set news_path=#{news_path} where news_num=#{news_num}
+   </update>
+   <delete id="NewsDelete" parameterType="com.travel.seoul.vo.NewsVO">
+      delete from news_tbl where news_num = #{value}
+   </delete>
+</mapper>

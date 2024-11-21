@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travel.seoul.mapper.BoardAttachMapper">
+	<insert id="insert" parameterType="com.travel.seoul.vo.BoardAttachVO">
+		insert into tbl_attach (uuid, uploadPath, fileName, fileType, board_num, admin_num, userSerial)
+			values (#{uuid},#{uploadPath},#{fileName},#{fileType},#{board_num},#{admin_num},#{userSerial} )
+	</insert>
+	<delete id="delete" parameterType="com.travel.seoul.vo.BoardAttachVO">
+		delete from tbl_attach where uuid=#{uuid}
+	</delete>
+	<select id="findByUserSerial" resultType="com.travel.seoul.vo.BoardAttachVO">
+		select  * from tbl_attach where userSerial =#{userSerial}
+	</select>
+	<select id="findByBoard_num" resultType="com.travel.seoul.vo.BoardAttachVO">
+    	select * from tbl_attach where board_num = #{board_num}
+	</select>
+	<select id="findByAdmin_num" resultType="com.travel.seoul.vo.BoardAttachVO">
+		select * from tbl_attach where admin_num =#{admin_num}
+	</select>
+	<delete id="deleteAllUserSerial" parameterType="com.travel.seoul.vo.BoardAttachVO">
+		delete from tbl_attach where userSerial =#{userSerial}
+	</delete>
+	<delete id="deleteAllBoard_num" parameterType="com.travel.seoul.vo.BoardAttachVO">
+		delete from tbl_attach where board_num =#{board_num}
+	</delete>
+	<delete id="deleteAllAdmin_num" parameterType="com.travel.seoul.vo.BoardAttachVO">
+		delete from tbl_attach where admin_num =#{admin_num}
+	</delete>
+	
+</mapper>

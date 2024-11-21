@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.travel.seoul.mapper.UserMapper">
+ 	<insert id="insert" parameterType="com.travel.seoul.vo.UserVO">
+ 		insert into tbl_member values
+ 		(null, #{userName}, #{userID},#{userPassword},#{userAge}, #{userSex},#{userArea1},#{userArea2},#{userArea3},#{fileName})
+ 	</insert>
+ 	<select id="list" resultType="com.travel.seoul.vo.UserVO">
+ 		select * from tbl_member 	
+ 	</select>
+ 	
+ 	<delete id="delete" parameterType="com.travel.seoul.vo.UserVO">
+ 		delete from tbl_member where userSerial = #{userSerial}
+ 	</delete>
+ 	<delete id="userdelete" parameterType="com.travel.seoul.vo.UserVO">
+ 		delete from tbl_member where userID = #{userID}
+ 	</delete>
+ 	<update id="update" parameterType="com.travel.seoul.vo.UserVO">
+ 		update tbl_member
+ 		  	set	
+ 		  		userName = #{userName}
+			 	userID = #{userID},
+			 	userPassword = #{userPassword},
+				userAge = #{userAge},
+				userSex = #{userSex},
+				userArea1 = #{userArea1},
+				userArea2 = #{userArea2},
+				userArea3 = #{userArea3},
+			where 	
+				userSerial = #{userSerial}
+ 	</update>
+ 	<select id="selectID" parameterType="com.travel.seoul.vo.UserVO"  resultType="com.travel.seoul.vo.UserVO">
+		SELECT *
+		  FROM tbl_member
+		 WHERE userID = #{id}
+	</select>
+	<select id="find_ID" parameterType="com.travel.seoul.vo.UserVO" resultType="com.travel.seoul.vo.UserVO">
+
+    select
+        *
+    from
+        tbl_member
+    where
+        userName = #{userName}
+    and
+        userAge = #{userAge}
+    and
+        userSex = #{userSex}
+
+	</select>
+	<select id="find_PW" parameterType="com.travel.seoul.vo.UserVO" resultType="com.travel.seoul.vo.UserVO">
+	<![CDATA[
+    select
+        *
+    from
+        tbl_member
+    where
+        userName = #{userName}
+    and
+        userID = #{userID}
+    and
+        userAge = #{userAge}
+    and
+        userSex = #{userSex}
+]]> 
+	</select>
+	<select id="userByIdAndPassword" parameterType="com.travel.seoul.vo.UserVO" resultType="com.travel.seoul.vo.UserVO">
+   
+      select * from tbl_member where userID = #{userID} and userPassword = #{userPassword}
+   
+   </select>
+</mapper>

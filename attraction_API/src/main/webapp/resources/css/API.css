@@ -1,0 +1,265 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+@font-face {
+    font-family: 'noto';
+    src: url(/resources/font/Noto_Sans_KR/NotoSansKR-Bold.ttf)
+}
+@font-face {
+    font-family: 'noto-reg';
+    src: url(/resources/font/Noto_Sans_KR/NotoSansKR-Regular.ttf)
+}
+
+.board_wrap {
+    width: 1000px;
+    margin: 25px auto;
+    font-size: 10px;
+    margin-bottom:70px;
+    margin-top:0;
+}
+
+.board_title {
+    margin-bottom: 30px;
+    background-image: url('/resources/img/경복궁2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 100px;
+    opacity: 0; /*초기에 투명도를 0으로 설정*/
+    border-radius: 5px;
+    animation: fadeIn 1.5s ease-out forwards; /*fadeIn 애니메이션 적용*/
+}
+
+#slideShow {
+  /*전체 컨테이너*/
+  width: 1200px;
+  height: 600px;
+  position: relative;
+  margin: 100px auto;
+  overflow: hidden; /*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
+}
+
+.slides {
+  /*이미지들이 담겨있는 슬라이드 컨테이너*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1200px; /* 슬라이드할 사진과 마진 총 넓이 */
+  transition: 0.5s ease-out; /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+} 
+.slides div{
+	width:1000px;
+	height:525px;
+	float: left;
+	text-align: center;
+	font-family:'noto';
+	font-size: 25px;
+}
+/* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
+.slides div:first-child {
+  margin-left: 100px;
+} /* 슬라이드들 옆으로 정렬 */
+.slides div:not(:last-child) {
+  margin-right: 100px;
+}
+.api_age_image1{
+	width:1000px;
+	height:525px;
+	margin-top: 30px;
+}
+.controller span {
+  position: absolute;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  border-radius: 50%;
+  padding: 10px 20px;
+  top: 50%;
+  font-size: 1.3em;
+  cursor: pointer;
+} /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover {
+  background-color: rgba(128, 128, 128, 0.11);
+}
+.controller{
+	z-index:1;
+	width: 1000px;
+    position: absolute;
+    left:50%;
+    top: 1130px;
+    transform:translate(-50%, -50%);
+}
+
+.next {
+  right: 10px;
+} /* 다음 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 시작할 때 투명도 0 */
+    }
+    to {
+        opacity: 1; /* 애니메이션이 끝날 때 투명도 1 */
+    }
+}
+
+.board_title strong {
+    font-size: 30px;
+}
+
+.board_title p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+.board_title strong,
+.board_title p {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+}
+.board_title.loaded{
+	margin-top:25px;
+}
+.board_title.loaded strong,
+.board_title.loaded p {
+    opacity: 1;
+    transform: translateX(0);
+}
+.label label{
+	display:inline-block;
+	width:200px;
+	line-height:50px;
+	text-align: center;
+}
+.sub1-title1{
+    padding:25px;
+    color: #4F6882;
+    font-size: 30px;
+    font-family: noto;
+    text-decoration: underline;
+    text-underline-offset: 2rem;
+    text-decoration-color: #6DAAE3;
+    text-decoration-thickness: 7px;
+    text-align: center;
+}
+.sub1-title2{
+    padding: 50px;
+    color: #4F6882;
+    font-size: 20px;
+    text-align: center;
+    line-height: 3;
+    font-family: noto-reg;
+    margin-bottom: 135px;
+}
+.sub1-title3{
+    padding-top: 100px;
+    padding-bottom: 55px;
+    color: #4F6882;
+    font-size: 30px;
+    font-family: noto;
+    text-decoration: underline;
+    text-underline-offset: 2rem;
+    text-decoration-color: #6DAAE3;
+    text-decoration-thickness: 7px;
+    text-align: center;
+}
+.sub1-title4{
+    padding: 30px;
+    color: #4F6882;
+    font-size: 20px;
+    font-family: noto-reg;
+    text-align: center;
+}
+
+
+.check{
+	display: inline-block;
+    line-height: 50px;
+    font-family:noto-reg;
+    font-size: 20px;
+    padding: 50px;
+    border: 2px solid;
+    width: 896px;
+    text-align:center;
+}
+.check label{
+	margin-right:20px;
+	margin-left:10px;
+}
+
+.check .last{
+	width:800px;
+	text-align:left;
+	margin-left:80px;
+}
+.check-button{
+	text-align: center;
+}
+#check-button1{
+    font-family: noto;
+    font-size: 25px;
+    color: #6DAAE3;
+    border: 3px solid;
+    border-color: #6DAAE3;
+   	border-radius: 40px;
+   	background-color: transparent;
+    width: 300px;
+    height: 70px;
+    bottom: 400px;
+    left: 285px;
+	z-index:999;
+	margin:40px;
+	margin-bottom:0px;
+}
+#check-button1:hover{
+    font-family: noto;
+    font-size: 25px;
+    color: #fff;
+    border: 3px solid;
+    border-color: #6DAAE3;
+   	border-radius: 40px;
+   	background-color: #6DAAE3;
+    width: 300px;
+    height: 70px;
+    bottom: 400px;
+    left: 285px;
+	z-index:999;
+	margin:40px;
+	margin-bottom:0px;
+}
+#check-button2{
+    font-family: noto;
+    font-size: 25px;
+    color: #6DAAE3;
+    border: 3px solid;
+    border-color: #6DAAE3;
+   	border-radius: 40px;
+   	background-color: transparent;
+    width: 300px;
+    height: 70px;
+    bottom: 400px;
+    left: 285px;
+	z-index:999;
+	margin:40px;
+	margin-bottom:0px;
+}
+#check-button2:hover{
+    font-family: noto;
+    font-size: 25px;
+    color: #fff;
+    border: 3px solid;
+    border-color: #6DAAE3;
+   	border-radius: 40px;
+   	background-color: #6DAAE3;
+    width: 300px;
+    height: 70px;
+    bottom: 400px;
+    left: 285px;
+	z-index:999;
+	margin:40px;
+	margin-bottom:0px;
+}
+
+
